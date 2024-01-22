@@ -83,15 +83,6 @@ void setup() {
   
   delay(5000);        //DELAY INIZIALE
 
-  //togliere--------------------------
-      ruotaSinistra.write(ruotaSinistraAvantiValore);
-      ruotaDestra.write(ruotaDestraAvantiValore);
-      delay(1000);        //DELAY INIZIALE
-      ruotaSinistra.write(ruotaStopValore);
-      ruotaDestra.write(ruotaStopValore);
-      delay(10000);        //DELAY INIZIALE
-  //togliere--------------------------
-
  //codice per implemntare l'input della tattica tramite il settaggio di dei pin della scheda
  //(pare che i pin scollegati siano  a high)
   if(digitalRead(pinTatticaScan) == LOW){
