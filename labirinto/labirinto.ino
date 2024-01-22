@@ -51,6 +51,7 @@ int cmDestra;
 int cmSinistra;
 int cmCentro;
 int contatoreAggiusta;
+int contAggiusta;
 
 int STATO;
 
@@ -85,7 +86,7 @@ void setup() {
     leggiDestra();
   }
   
-  
+  contAggiusta = 0;
 
   
 }
@@ -135,15 +136,19 @@ void loop() {
   
   case sinistra:
   case destra:
-    delay(350);   //400  //ti centri rispetto alla curva
+    delay(250); //300  //350  //400  //ti centri rispetto alla curva
+    ruotaSinistra.write(ruotaStopValore);
+    ruotaDestra.write(ruotaStopValore);
+    delay(100);
     leggiSinistra();
     leggiDestra();
-
+    
     if(cmSinistra > cmDestra){
       giraSinistra();
     }else{
       giraDestra();
     }
+    contAggiusta = 0;
     break;
 
   /*case aggiustare:
@@ -332,13 +337,15 @@ void aggiusta(){
   int diffDex = cmDestra-cmSinistra;
   int diffSex = cmSinistra-cmDestra;
   if(diffDex < 20 && diffSex < 20){
-    if(diffSex>2){
+    if(diffSex>2 && contAggiusta != 1){
+      contAggiusta ++;
       ruotaDestra.write(ruotaStopValore);
-      delay(17 * diffSex);
+      delay(8 * diffSex);//17
       ruotaDestra.write(ruotaDestraAvantiValore);
-    }else if(diffDex>2){
+    }else if(diffDex>2 && contAggiusta != -1){
+      contAggiusta --;
       ruotaSinistra.write(ruotaStopValore);
-      delay(17 * diffDex);
+      delay(8 * diffDex);
       ruotaSinistra.write(ruotaSinistraAvantiValore);
     }
   }
