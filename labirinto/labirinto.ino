@@ -371,7 +371,6 @@ void salvaStoricoSinistra(int valore)
   storicoSinistra[0] = valore;
 }
 
-
 long microsecondsToCentimeters(long microseconds)
 {
   return microseconds / 29 / 2;
